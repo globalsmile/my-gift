@@ -1,9 +1,5 @@
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import Gifts from "./components/Gifts";
 import Navbar from "./components/Navbar";
 import Receivers from "./components/Receivers";
