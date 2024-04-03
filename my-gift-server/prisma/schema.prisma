@@ -6,9 +6,32 @@
 
 generator client {
   provider = "prisma-client-js"
+   previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  schemas  = ["gudtuoho", "lffdyrfl"]
+}
+
+model Note {
+  id        Int   @id @default(autoincrement())
+  title     String
+  content   String
+
+  @@schema("gudtuoho")
+}
+
+model Gift {
+  id          Int   @id @default(autoincrement())
+  name        String
+  pricePoint  String
+  audience    String
+  image       String
+  description String
+  submittedBy Sting
+  submittedOn String
+
+  @@schema("gudtuoho")
 }
