@@ -1,25 +1,79 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
-import Gifts from "./components/Gifts";
-import Navbar from "./components/Navbar";
-import Receivers from "./components/Receivers";
-import Records from "./components/Records";
-import Reminders from "./components/Reminders";
-import Suggestions from "./components/Suggestions";
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import { useRoutes } from "react-router-dom";
+import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Gifts from "./pages/Gifts";
+import GiftDetails from "./pages/GiftDetails";
+import PageNotFound from "./pages/PageNotFound";
+import CreateGift from "./pages/CreateGift";
+import EditGift from "./pages/EditGift";
+import Records from "./pages/Records";
 
-function App() {
-    return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route exact path="/" element={<Gifts />} />
-                <Route path="/Receivers" element={<Receivers />} />
-                <Route path="/Records" element={<Records />} />
-                <Route path="/Reminders" element={<Reminders />} />
-                <Route path="/Suggestions" element={<Suggestions />} />
-            </Routes>
-        </Router>
-    );
-}
- 
+const App = () => {
+    const [gifts, setGifts] = useState([]);
+  
+    const fetchGifts = async () => {
+      const res = await fetch("/api/gifts");
+      const data = await res.json();
+      setGifts(data);
+    };
+  
+    useEffect(() => {
+      fetchGifts();
+      console.log(gifts);
+    }, []);
+  
+    // Sets up routes
+    let element = useRoutes([
+      {
+        path: "/",
+        element: <Gifts data={gifts} />
+      },
+      {
+        path: "/gift/:id",
+        element: <GiftDetails data={gifts} />
+      },
+      {
+        path: "/new",
+        element: <CreateGift />
+      },
+      {
+        path: "/edit/:id",
+        element: <EditGift data={gifts} />
+      },
+      {
+        path: "/*",
+        element: <PageNotFound />
+      },
+      {
+        path: "/*",
+        element: <Records />
+      }
+    ]);
+
+     return (
+    <div className="App">
+      <header>
+        <div className="header-container">
+          <div className="header-left">
+            <img src="./My Gift Logo.png" />
+            <h1>MyGift</h1>
+          </div>
+          <div className="header-right">
+            <Link to="/">
+              <button className="homeBtn">Home</button>
+              <Link to="/new">
+                <button className="addBtn">+ Add Gift</button>
+              </Link>
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {element}
+    </div>
+  );
+};
+
 export default App;
