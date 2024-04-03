@@ -1,3 +1,11 @@
+##About MyGift
+This web application was created in response to the gap in tracking the way gift items are distributed in various settings. The various settings are unlimited and include schools, corporate organisations, non-governmental organisations etc.
+
+This web application simply helps with the coordination of gift items disbursement to deserving persons in various settings.
+
+This web application provides a seamless way to plan and track how gift items are distributed.
+
+
 ##Features
 User are able to:
 Add and view gifts
