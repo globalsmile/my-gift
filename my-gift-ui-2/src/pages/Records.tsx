@@ -144,13 +144,13 @@ const Records = () => {
         <input
           value={title}
           onChange={(event) => setTitle(event.target.value)}
-          placeholder="Title"
+          placeholder="Your unique ID"
           required
           ></input>
           <textarea
             value={content}
             onChange={(event) => setContent(event.target.value)}
-            placeholder="Content"
+            placeholder="Confirm receipt and Send appreciation"
             rows={10}
             required
           ></textarea>
