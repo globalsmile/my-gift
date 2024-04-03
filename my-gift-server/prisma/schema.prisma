@@ -30,8 +30,8 @@ model Gift {
   audience    String
   image       String
   description String
-  submittedBy Sting
+  submittedBy String
   submittedOn String
 
-  @@schema("gudtuoho")
+  @@schema("lffdyrfl")
 }

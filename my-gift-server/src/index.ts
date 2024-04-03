@@ -10,6 +10,6 @@ app.get("/api/gifts", async (req, res) => {
   res.json({ message: "success!" });
 });
 
-app.listen(5000, () => {
-  console.log("server running on localhost:5000");
+app.listen(5432, () => {
+  console.log("server running on localhost:5432");
 });
